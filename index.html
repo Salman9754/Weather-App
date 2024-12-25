@@ -15,29 +15,36 @@
         <div class="submain-container">
             <div class="search-box d-flex align-items-center justify-content-center">
                 <i class="fa-solid fa-location-dot mx-1"></i>
-                <input type="text" class="form-control" id="searchId" placeholder="Search">
-                <button class="searchBtn d-flex"><i class="fa-solid fa-magnifying-glass"></i></button>
+                <input type="text" class="form-control" id="searchId" placeholder="Search" autocomplete="off">
+                <button class="searchBtn d-flex"><i class="fa-solid fa-magnifying-glass" onclick="search()"></i></button>
             </div>
+          <div class="container" id="weather-window">
             <div class="weather-box mt-5">
                 <div class="info">
                     <img src="Assets/cloud.png" alt="">
-                    <p class="text-light temp mt-2">16<sup><span>&#176;c</span></sup></p>
+                    <div class="mt-3"><span class="text-light temp fs-1" id="temp">0<sup>&#176;c</sup></div>
+                    <p id="city">Search City</p>
                 </div>
             </div>
             <div class="weather-extra d-flex justify-content-between mt-5">
                 <div class="box1 d-flex gap-2 align-items-center">
                     <div class="icon d-flex"><i class="fa-solid fa-water"></i></div>
                     <div class="extra-info d-flex flex-column">
-                        <span>0</span><span>Humadity</span>
+                        <div id="hum">0</div><div>Humidity</div>
                     </div>
                 </div>
                 <div class="box2 d-flex gap-2 align-items-center">
                     <div class="icon d-flex"><i class="fa-solid fa-wind"></i></div>
                     <div class="extra-info d-flex flex-column">
-                        <span>0</span><span>Wind speed</span>
+                        <div><span id="Wind" class="m-0">0</span> <span>km/h</span></div><div>Wind speed</div>
                     </div>
                 </div>
             </div>
+          </div>
+          <div class="container mt-5 d-flex justify-content-center align-items-center flex-column error-window" id="error-window">
+            <img src="Assets/404.png" alt="" width="300px" height="250px" class="m-auto">
+            <p class="mt-3 fs-5 text-center">Oops! Location not found</p>
+          </div>
         </div>
     </div>
     </div>
@@ -46,6 +53,7 @@
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/3a83dfd1d2.js" crossorigin="anonymous"></script>
+    <script src="app.js"></script>
 </body>
 
 </html>
