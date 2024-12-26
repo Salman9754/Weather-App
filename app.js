@@ -5,7 +5,11 @@ function search() {
   if (cityName) {
     getWeather();
   } else {
-    alert("Please enter a city");
+    Swal.fire({
+      icon: "error",
+      title: "Oops...",
+      text: "Enter Location!",
+    });
   }
 }
 
