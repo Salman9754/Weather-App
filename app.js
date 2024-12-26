@@ -1,13 +1,8 @@
-
 let cityName;
 
 function search() {
   cityName = document.getElementById("searchId").value.trim();
-  let city = document.getElementById("city");
-  console.log(cityName);
-  
   if (cityName) {
-    city.innerHTML = cityName;
     getWeather();
   } else {
     alert("Please enter a city");
@@ -16,26 +11,49 @@ function search() {
 
 async function getWeather() {
   const citySearchUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=244006e372fb520e56e50b3032f7bcf1&units=metric`;
-  let weatherWindow = document.getElementById('weather-window');
-  let errorWindow = document.getElementById('error-window');
-  errorWindow.style.display = 'none';
+  const weatherWindow = document.getElementById("weather-window");
+  const errorWindow = document.getElementById("error-window");
+  const temperature = document.getElementById("temp");
+  const humidity = document.getElementById("hum");
+  const wind = document.getElementById("Wind");
+  const weatherCity = document.getElementById("weatherCity");
+  const weatherImg = document.getElementById("weather-img");
+
+  errorWindow.style.display = "none";
 
   try {
-    let response = await fetch(citySearchUrl);
-    let data = await response.json();
+    const response = await fetch(citySearchUrl);
+    const data = await response.json();
 
-    weatherWindow.style.display = 'block';
-    errorWindow.style.display = 'none';
-
-    let temperature = document.getElementById("temp");
-    temperature.innerHTML = Math.round(data.main.temp) + "<sup>&#176;c</sup>";
-    let humidity = document.getElementById("hum");
+    weatherWindow.style.display = "block";
+    temperature.innerHTML = `${Math.round(data.main.temp)}<sup>&#176;c</sup>`;
     humidity.innerHTML = Math.round(data.main.humidity);
-    let wind = document.getElementById("Wind");
     wind.innerHTML = data.wind.speed;
+    weatherCity.innerHTML = data.weather[0].main;
+
+    switch (data.weather[0].main) {
+      case "Clouds":
+        weatherImg.src = "Assets/snow.png";
+        break;
+      case "Clear":
+        weatherImg.src = "Assets/clear.png";
+        break;
+      case "Rain":
+        weatherImg.src = "Assets/rain.png";
+        break;
+      case "Smoke":
+        weatherImg.src = "Assets/mist.png";
+        break;
+      case "Haze":
+        weatherImg.src = "Assets/snow.png";
+        break;
+      default:
+        weatherImg.src = "Assets/cloud.png";
+        break;
+    }
   } catch (error) {
     console.log(error);
-    weatherWindow.style.display = 'none';
+    weatherWindow.style.display = "none";
     errorWindow.setAttribute("style", "display: block !important;");
   }
 }
