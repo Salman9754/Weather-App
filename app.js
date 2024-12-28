@@ -28,7 +28,6 @@ async function getWeather() {
   try {
     const response = await fetch(citySearchUrl);
     const data = await response.json();
-
     weatherWindow.style.display = "block";
     temperature.innerHTML = `${Math.round(data.main.temp)}<sup>&#176;c</sup>`;
     humidity.innerHTML = Math.round(data.main.humidity);
