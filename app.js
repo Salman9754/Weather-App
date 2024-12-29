@@ -17,14 +17,12 @@ async function getWeather() {
   const citySearchUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=244006e372fb520e56e50b3032f7bcf1&units=metric`;
   const weatherWindow = document.getElementById("weather-window");
   const errorWindow = document.getElementById("error-window");
+  errorWindow.style.display = "none";
   const temperature = document.getElementById("temp");
   const humidity = document.getElementById("hum");
   const wind = document.getElementById("Wind");
   const weatherCity = document.getElementById("weatherCity");
   const weatherImg = document.getElementById("weather-img");
-
-  errorWindow.style.display = "none";
-
   try {
     const response = await fetch(citySearchUrl);
     const data = await response.json();
