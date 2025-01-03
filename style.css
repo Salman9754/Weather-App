@@ -2,9 +2,9 @@
 *{font-family:"Poppins",sans-serif;color:white;overflow:hidden;}  
 .main-container{height:100vh;background:linear-gradient(90deg,rgba(36,2,57,1)0%,rgba(110,0,0,1)54%,rgba(149,87,0,1)97%);}  
 .search-box{border:1px solid rgba(255,255,255,0.3);padding:5px;border-radius:8px;}  
-.search-box input{border:none;background:transparent;color:white;width:250px;}  
+.search-box input{border:none !important;background:transparent !important;color:white !important;width:250px;}  
 .search-box input::placeholder{color:white;}  
-.search-box input:focus{outline:none;border-color:white;}  
+.search-box input:focus{outline:none !important;border-color:white !important; box-shadow: none !important;}  
 .searchBtn{border:none;background:transparent;color:white;}  
 .submain-container{padding:40px 15px;background-color:rgba(255,255,255,0.1);backdrop-filter:blur(30px);border-radius:10px;animation:fadeIn 0.5s ease-in-out;}  
 .info{display:flex;justify-content:center;align-items:center;flex-direction:column;animation:slideIn 0.7s ease-in-out;}  
